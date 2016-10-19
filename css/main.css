@@ -175,3 +175,33 @@ footer {
     footer a:hover {
       color: #DB9A00 !important; }
 
+/** ICON STYLES */
+.icon-btn{
+	margin-left:5px;
+	width:75px;
+	height:75px;
+	border: 1px  #FFFFFF;
+	cursor: pointer;
+	font-size: 40px;
+	line-height: 75px;
+	border-radius: 50px;
+}
+
+.facebook{
+	color: #3B5998
+}
+
+.icon-btn:hover{
+	transform: scale(1.10);
+	color:white;
+}
+
+.github{
+	color: #4183C4
+}
+.facebook:hover{
+	background-color: #3B5998
+}
+.github:hover{
+	background-color: #4183C4
+}
