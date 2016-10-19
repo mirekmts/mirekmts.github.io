@@ -1,0 +1,34 @@
+/* Responsive styles */
+/* Large Devices, Wide Screens */
+/* Medium Devices, Desktops */
+/* Small Devices, Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+  p {
+    padding: 10px; } }
+/* Small Devices Portrait */
+@media (max-width: 767px) {
+  header {
+    width: auto;
+    height: 385px; }
+
+  p {
+    letter-spacing: 1px !important;
+    font-size: 18px !important; }
+
+  .technology img {
+    width: 70px; } }
+/* Extra Small Devices, Phones */
+@media (max-width: 479px) {
+  header {
+    width: auto;
+    height: 665px; }
+
+  p {
+    letter-spacing: 1px !important;
+    font-size: 18px !important; }
+
+  .technology img {
+    width: 70px; } }
+/* Custom, iPhone Retina */
+
+/*# sourceMappingURL=responsive.css.map */
