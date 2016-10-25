@@ -11,6 +11,13 @@ section {
 
 .section-padding {
   padding: 60px 30px; }
+  
+  .section-padding2 {
+  
+  padding-bottom:0px;
+  padding-left:30px;
+  padding-right: 30px;
+  padding-top: 60px;}
 
 .hr-line {
   border: 0;
@@ -22,7 +29,7 @@ section {
   background-image: -moz-linear-gradient(right, #333, black, #333);
   background-image: -ms-linear-gradient(right, #333, black, #333);
   background-image: -o-linear-gradient(right, #333, black, #333);
-  margin-bottom: 25px; }
+  margin-bottom: 50px; }
 
 .hr-line-black {
   border: 0;
@@ -33,7 +40,8 @@ section {
   background-image: -webkit-linear-gradient(right, #FFFFFB, white, #FFFFFB);
   background-image: -moz-linear-gradient(right, #FFFFFB, white, #FFFFFB);
   background-image: -ms-linear-gradient(right, #FFFFFB, white, #FFFFFB);
-  background-image: -o-linear-gradient(right, #FFFFFB, white, #FFFFFB); }
+  background-image: -o-linear-gradient(right, #FFFFFB, white, #FFFFFB); 
+  margin-bottom: 50px;}
 
 /** FONT STYLES */
 .title-font {
@@ -51,7 +59,8 @@ section {
 /** HEADER */
 header {
   width: 100%;
-  height: 950px;
+  height: 100vh;
+  max-height: 1000px;
   background: center url("../img/03.jpg") no-repeat fixed; }
   header h1 {
     font-family: "Cuprum", sans-serif !important;
@@ -62,7 +71,7 @@ header {
     font-family: "Cuprum", sans-serif; }
   header nav {
     width: auto;
-    background-color: #1D587F;
+    background-color: #248CCF;
     height: 53px; }
     header nav button i {
       color: white; }
@@ -76,7 +85,7 @@ header {
     letter-spacing: 2px;
     font-size: 18px;
     font-weight: 900;
-    background-color: #1D587F; }
+    background-color: #248CCF; }
     header .nav-list a:hover {
       background-color: #246E9E; }
 
@@ -94,7 +103,8 @@ header {
 .photo {
   max-width: 180px !important;
   height: auto;
-  margin: 15px 0; }
+  margin: 15px 0;
+  }
 
 /** SECTION SKILLS */
 .skills {
@@ -108,8 +118,7 @@ header {
   height: auto;
   padding: 60px 0; }
   .technology .icons-top h1 {
-    font-family: "Kanit", sans-serif;
-    padding-bottom: 20px; }
+    font-family: "Kanit", sans-serif;}
   .technology .icons-top li {
     padding: 10px;
     margin: 5px; }
@@ -205,3 +214,21 @@ footer {
 .github:hover{
 	background-color: #4183C4
 }
+
+.btn-primary{
+	background: #248CCF;
+}
+
+
+.me{
+	max-width: 600px;
+	min-height: 500px;
+	background: url("../img/photo-back2.png") -30px 100% no-repeat;
+	background-size: 410px 520px;
+	top: 50px;
+}
+	
+	
+	
+	
+	
