@@ -3,31 +3,36 @@
 
 // Inicjuję grę dopiero po załadowaniu całej strony
 window.onload = function(){
+    
 	Game.init();
 }
 // Obiekt, w którym będą przechowywane „podręczne” wartości
 VAR = {
+    startGame: true,
 	fps:60,
 	W:0,
 	H:0,
 	lastTime:0,
 	lastUpdate:-1,
+    startTime: new Date().getTime(),
 	rand:function(min,max){
 		return Math.floor(Math.random()*(max-min+1))+min;
 	}
+    
 }
 // Obiekt zawierający bazowe funckje związane z grą.
 // Game nie ma konstruktora, jest jedynie obiektem grupującym funkcje.
 Game = {
 	// init zostanie odpalone raz po załadowaniu strony.
 	init:function(){
+        VAR.startTime;
 		// Tworzę canvas
 		Game.canvas = document.createElement('canvas');
 		// Oraz canvas, które nigdy nie będzie dodane do domu, na którym będą testowane kolizje kamieni z pociskami i statkiem
 		Game.hit_canvas = document.createElement('canvas');
         //Tworzę div z tekstem o przegranej
-        Game.lose = document.createElement('div');
-        Game.lose.innerHTML = "You lose <br>Refresh page to play again";
+        Game.end_div = document.createElement('div');
+        
 		// Przypisuję kontekst 2D do zmiennej ctx, która jest właściwością obiektu Game
 		Game.ctx = Game.canvas.getContext('2d');
 		// oraz kontekst 2D hit_canvas
@@ -55,10 +60,24 @@ Game = {
         //Odłączamy nasłuchiwanie przycisków
         window.removeEventListener('keydown', Game.onKey, false);
 		window.removeEventListener('keyup', Game.onKey, false);
+        // sprawdzamy czas po zakonczeniu gry
+        var time = (new Date().getTime() - VAR.startTime) / 1000;
+        Game.end_div.innerHTML = "You lose with score: " + Rock.score + " </br>Game time: " + time + " s " + " <br>Refresh page to play again";
         //Dodajemy do body text o przegranej
-        document.body.appendChild(Game.lose);
-      
+        document.body.appendChild(Game.end_div);
         
+    },
+    win: function() {
+        //wyłączamy animation Loop
+        VAR.startGame = false;
+        //Odłączamy nasłuchiwanie przycisków
+        window.removeEventListener('keydown', Game.onKey, false);
+		window.removeEventListener('keyup', Game.onKey, false);
+        // sprawdzamy czas po zakonczeniu gry
+        var time = (new Date().getTime() - VAR.startTime) / 1000;
+        Game.end_div.innerHTML = "Congratulations<br>You WIN with score: " + Rock.score + " </br>Game time: " + time + " s " + " <br>Refresh page to play again";
+        //Dodajemy do body text o przegranej
+        document.body.appendChild(Game.end_div);
         
     },
 	// 
@@ -106,27 +125,27 @@ Game = {
 		Game.hit_canvas.height = VAR.H;
 		// Wypełnienie kamieni na hit_canvas (do testów kolizji)
 		Game.hit_ctx.fillStyle = '#ff0000';
-        
-        Game.lose.width = VAR.W;
-		Game.lose.height = VAR.H;
+    
 	},
 	// Funkcja, która odpala się 60 razy na sekundę
 	animationLoop:function(time){
-		requestAnimationFrame( Game.animationLoop );
-		// ograniczenie do ilości klatek zdefiniowanych w właściwości obiektu VAR (nie więcej niż VAR.fps)
-		if(time-VAR.lastTime>=1000/VAR.fps){
-			VAR.lastTime = time;
-			//
-			// oczyszczenie canvas
-			Game.ctx.clearRect(0,0,VAR.W, VAR.H);
-			// Rysowanie statku
-			Game.ship.draw();
-            // Rysowanie kamieni
-			Rock.draw();
-			// Rysowanie pocisków
-			Bullet.draw();
-			//
-            Dot.draw();
-		}
+        if(VAR.startGame) {
+           requestAnimationFrame( Game.animationLoop );
+            // ograniczenie do ilości klatek zdefiniowanych w właściwości obiektu VAR (nie więcej niż VAR.fps)
+            if(time-VAR.lastTime>=1000/VAR.fps){
+                VAR.lastTime = time;
+                //
+                // oczyszczenie canvas
+                Game.ctx.clearRect(0,0,VAR.W, VAR.H);
+                // Rysowanie statku
+                Game.ship.draw();
+                // Rysowanie kamieni
+                Rock.draw();
+                // Rysowanie pocisków
+                Bullet.draw();
+                //
+                Dot.draw();
+            } 
+        }
 	}
 }

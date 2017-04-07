@@ -2,11 +2,13 @@
 Rock.all = {};
 // Liczy wszystkie asteroidy dzięki czemu mamy unikatowe id
 Rock.count = 0;
+
+Rock.score = 0;
 // Dane dla kamieni różnych wielkości
 Rock.data = [
-	{r: 0.025, speed:0.0005,    minAngle:60, maxAngle:90, minSmallerRocks:0, maxSmallerRocks:0},
-	{r: 0.08,  speed:0.00025,   minAngle:50, maxAngle:70, minSmallerRocks:2, maxSmallerRocks:3},
-	{r: 0.2,   speed:0.0000625, minAngle:30, maxAngle:45, minSmallerRocks:3, maxSmallerRocks:4}
+	{r: 0.025, speed:0.0005,    minAngle:60, maxAngle:90, minSmallerRocks:0, maxSmallerRocks:0, score: 1},
+	{r: 0.08,  speed:0.00025,   minAngle:50, maxAngle:70, minSmallerRocks:2, maxSmallerRocks:3, score: 2},
+	{r: 0.2,   speed:0.0000625, minAngle:30, maxAngle:45, minSmallerRocks:3, maxSmallerRocks:4, score: 3}
 ];
 function Rock(size,x,y){//size może się równać 0, 1 lub 2 (dwa to największe klocki)
 	// rośnie count o jeden
@@ -105,6 +107,7 @@ Rock.prototype.remove = function(){
 			new Rock(this.size-1, this.x, this.y)	
 		}
 	}
+    Rock.score += Rock.data[this.size].score;
     Dot.add(this.x, this.y);
 	delete Rock.all[this.id]
 }
@@ -117,4 +120,8 @@ Rock.draw = function(){
 		// rysuj ten konkretny kamień
 		Rock.all[r].draw();
 	}
+    //sprawdzenie czy wszystkie kamienie zostaly zniszczone
+    if (Rock.num == 0) {
+        Game.win();
+    }
 };
