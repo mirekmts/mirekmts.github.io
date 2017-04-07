@@ -25,6 +25,7 @@ VAR = {
 Game = {
 	// init zostanie odpalone raz po załadowaniu strony.
 	init:function(){
+        Sound.init();
         VAR.startTime;
 		// Tworzę canvas
 		Game.canvas = document.createElement('canvas');
@@ -74,6 +75,7 @@ Game = {
         window.removeEventListener('keydown', Game.onKey, false);
 		window.removeEventListener('keyup', Game.onKey, false);
         // sprawdzamy czas po zakonczeniu gry
+        Sound.play('win');
         var time = (new Date().getTime() - VAR.startTime) / 1000;
         Game.end_div.innerHTML = "Congratulations<br>You WIN with score: " + Rock.score + " </br>Game time: " + time + " s " + " <br>Refresh page to play again";
         //Dodajemy do body text o przegranej

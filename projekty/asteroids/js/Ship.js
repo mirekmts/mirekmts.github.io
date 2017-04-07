@@ -111,6 +111,15 @@ Ship.prototype.draw = function() {
             }else if(Game.key_38 && !this.draw_thrust){
                 this.draw_thrust=true;
             }
+            
+            if(Game.key_38 && (!Game.thrust_sound || Game.thrust_sound <= 0)) {
+                Game.thrust_sound = 60;
+                Sound.play('thrust');
+            } else if (Game.key_38 && Game.thrust_sound) {
+                Game.thrust_sound -= 1000/VAR.fps; 
+            } else if (!Game.key_38) {
+                Game.thrust_sound = false;
+            }
             //
             //
             //

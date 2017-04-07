@@ -15,6 +15,7 @@ Bullet.life = 35;
 function Bullet(){
 	// jeśli ilość widocznych pocisków jest mniejsza niż maksymalna ilość pocisków
 	if(Bullet.active_count<Bullet.max){
+        Sound.play('laser');
 		// zwiększa ilość widocznych pocisków
 		Bullet.active_count++;
 		// zwiększa ilość wszystkich wystrzelonych pocisków

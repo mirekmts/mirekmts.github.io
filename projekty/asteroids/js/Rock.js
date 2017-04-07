@@ -101,6 +101,7 @@ Rock.prototype.draw = function() {
 	Game.ctx.stroke();
 };
 Rock.prototype.remove = function(){
+    Sound.play('bum' + VAR.rand(1,2));
 	// jeśli to nie był mały kamyczek w miejsce kamienia wstaw inne kamienie
 	if(this.size>0){
 		for (var i = 0, j = VAR.rand(Rock.data[this.size].minSmallerRocks,Rock.data[this.size].maxSmallerRocks); i < j; i++) {
