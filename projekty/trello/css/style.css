@@ -52,8 +52,9 @@
 }
 body {
 	background: linear-gradient(0deg, #174555, #ffab4a);
-	font-family: 'Roboto', sans-serif;	
+	font-family: 'Roboto', sans-serif;
 	font-weight: 100;
+	min-height: 100vh;
 }
 
 button {
@@ -117,7 +118,7 @@ button {
     border-top: 2px solid black;
 }
 .card-placeholder {
-	height: 115px;
+	min-height: 50px;
 	width: 100%;
 	background: rgba(255,255,255,.4);
 	margin-bottom: 10px;
@@ -153,7 +154,7 @@ button {
     font-size: 16px;
 }
 .card {
-	min-height: 115px;
+	min-height: 50px;
     background: white;
     border-radius: 10px;
     padding: 11px;
@@ -167,9 +168,12 @@ button {
 	margin-right: -8px;
 }
 
+.card-description {
+	word-wrap: break-word;
+}
+
 @media (max-width: 992px) {
 	.column-container {
 		justify-content: center;
 	}
 }
-
